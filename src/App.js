@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import './App.css';
 import contractABI from './utils/abi.json'
 
-const contractAddress = "0x9818b37c97895b7679835C9284A92f6a1d3D12F8"
+const contractAddress = "0x22766Bd75290D13C658038b178CA4E70Eb252dde"
 
 console.log({contractAddress, contractABI})
 
@@ -55,6 +55,10 @@ function useWaveContract() {
   const [waves, setWaves] = useState([]);
 
   useEffect(() => {
+    if (!window.ethereum) {
+      return;
+    }
+
     let wavePortalContract;
 
     const provider = new ethers.providers.Web3Provider(window.ethereum);
