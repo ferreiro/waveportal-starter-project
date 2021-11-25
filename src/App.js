@@ -12,15 +12,18 @@ function useWallet() {
   const [accounts, setAccounts] = useState([]);
 
   async function getAccounts() {
-    const accounts = await window.ethereum.request({
+    const allAccounts = await window.ethereum.request({
       method: 'eth_accounts'
     }).then((accounts) => {
       console.log('get accounts')
       setAccounts(accounts);
+      return accounts;
     }).catch((error) => {
       console.log('error getting accounts')
       console.log(console.error());
     });
+
+    console.log({ allAccounts })
   }
 
   async function connect() {
