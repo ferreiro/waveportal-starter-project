@@ -14,11 +14,13 @@ function useWallet() {
   async function getAccounts() {
     const accounts = await window.ethereum.request({
       method: 'eth_accounts'
+    }).then((accounts) => {
+      console.log('get accounts')
+      setAccounts(accounts);
+    }).catch((error) => {
+      console.log('error getting accounts')
+      console.log(console.error());
     });
-
-    console.log('get accounts')
-
-    setAccounts(accounts);
   }
 
   async function connect() {
