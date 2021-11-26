@@ -13,7 +13,7 @@ function useWallet() {
 
   async function getAccounts() {
     const allAccounts = await window.ethereum.request({
-      method: 'eth_accounts'
+      method: 'eth_requestAccounts'
     }).then((accounts) => {
       console.log('get accounts')
       setAccounts(accounts);
@@ -148,7 +148,7 @@ export default function App() {
   return (
     <div className="mainContainer">
       <div className="dataContainer">
-        {/* <center>{isConnected ? 'Wallet Connected' : 'Wallet Not connected'}</center><br /> */}
+        <center>{isConnected ? 'Wallet Connected' : 'Wallet Not connected'}</center><br />
 
         <div className="header">
         👋 The simplest Web3 app lol
